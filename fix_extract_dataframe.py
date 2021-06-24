@@ -46,7 +46,6 @@ class TweetDfExtractor:
         text_pol = TextBlob(text).polarity
         text_subj = TextBlob(text).subjectivity
         return text_pol, text_subj
-        return text_pol, text_subj
 
     def find_created_time(self)->list:
        
