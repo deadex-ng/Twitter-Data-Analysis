@@ -47,7 +47,6 @@ class TweetDfExtractor:
         text=[]
         for i in self.tweets_list:
             text.append(i['text'])
-    
         return text 
 
     def find_sentiments(self, text)->list:
