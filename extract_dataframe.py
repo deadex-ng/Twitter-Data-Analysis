@@ -47,7 +47,6 @@ class TweetDfExtractor:
         text=[]
         for i in self.tweets_list:
             text.append(i['text'])
-    
         return text 
 
     def find_sentiments(self, text)->list:
@@ -55,11 +54,9 @@ class TweetDfExtractor:
             subjectivity = []
 
             for each in text:
-                if (each):
-                    result = TextBlob(str(each)).sentiment
-                    polarity.append(result.polarity)
-                    subjectivity.append(result.subjectivity)
-            
+                result = TextBlob(str(each)).sentiment
+                polarity.append(result.polarity)
+                subjectivity.append(result.subjectivity)
             return polarity, subjectivity
 
     def is_sensitive(self)->list:
@@ -71,14 +68,7 @@ class TweetDfExtractor:
                 is_sensitive = None
             isSensitive += [is_sensitive]
         return isSensitive
-
-
-    def find_lang(self)->list:
-        lang = []
-        for i in self.tweets_list:
-            lang.append(i['lang'])
-        return lang
-
+    
     def find_created_time(self)->list:
         created_at= []
         for i in self.tweets_list:
@@ -86,6 +76,11 @@ class TweetDfExtractor:
        
         return created_at
 
+    def find_lang(self)->list:
+        lang = []
+        for i in self.tweets_list:
+            lang.append(i['lang'])
+        return lang
     def find_source(self)->list:
         source = []
         for i in self.tweets_list:
@@ -110,9 +105,6 @@ class TweetDfExtractor:
         for i in self.tweets_list:
             friends_count.append(i['user']['friends_count'])
         return friends_count    
-
-    
-
     def find_favourite_count(self)->list:
         favourite_count=[]
         for i in self.tweets_list:
