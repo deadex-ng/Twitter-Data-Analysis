@@ -1,6 +1,6 @@
 # Twitter-Data-Analysis
 
-This project follows the below steps 
+I follwed the steps beloow for this project
 
 ### So here are the bare minimum requirement for completing this task
 
