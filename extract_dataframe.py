@@ -84,8 +84,7 @@ class TweetDfExtractor:
 
     def find_favourite_count(self)->list:
         return [x.get('retweeted_status', {}).get('favorite_count',0) for x in self.tweets_list]
-        
-    
+
     def find_retweet_count(self)->list:
         return  [(x.get('retweeted_status',{})).get('retweet_count', None) for x in self.tweets_list]
 
