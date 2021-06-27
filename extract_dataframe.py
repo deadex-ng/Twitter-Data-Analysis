@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 from textblob import TextBlob
+from clean_tweets_dataframe import Clean_Tweets
 
 def read_json(json_file: str)->list:
     """
@@ -143,3 +144,10 @@ if __name__ == "__main__":
     _, tweet_list = read_json("data/covid19.json")
     tweet = TweetDfExtractor(tweet_list)
     tweet_df = tweet.get_tweet_df()
+
+    tweet_obj = Clean_Tweets(tweet_df)
+    tweet_obj.drop_unwanted_column(tweet_df)
+    tweet_obj.drop_duplicate(tweet_df)
+    tweet_obj.convert_to_datetime(tweet_df)
+    tweet_obj.convert_to_numbers(tweet_df)
+    tweet_obj.remove_non_english_tweets(tweet_df)
