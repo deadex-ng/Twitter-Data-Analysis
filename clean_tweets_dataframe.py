@@ -1,4 +1,5 @@
 import pandas as pd
+
 class Clean_Tweets:
     """
     The PEP8 Standard AMAZING!!!
@@ -16,7 +17,7 @@ class Clean_Tweets:
         unwanted_rows = df[df['retweet_count'] == 'retweet_count'].index
         df.drop(unwanted_rows, inplace=True)
         df = df[df['polarity'] != 'polarity']
-
+        print("Function Executed")
         return df
 
     def drop_duplicate(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -39,9 +40,11 @@ class Clean_Tweets:
         convert columns like polarity, subjectivity, retweet_count
         favorite_count etc to numbers
         """
-        df['polarity', 'subjectivity', 'retweet_count', 'favorite_count'] = pd.to_numeric(df['polarity', 'subjectivity',
-                                                                                             'retweet_count', 'favorite_count'])
-
+        df['polarity_num'] = pd.to_numeric(df['polarity'], errors='coerce')
+        df['subjectivity_num'] = pd.to_numeric(df['subjectivity'],errors='coerce')
+        df['retweet_count_num'] = pd.to_numeric(df['retweet_count'],errors= 'coerce')
+        df['favorite_count_num'] = pd.to_numeric(df['favorite_count'],errors='coerce')        
+        
         return df
 
     def remove_non_english_tweets(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -49,3 +52,4 @@ class Clean_Tweets:
         remove non english tweets from lang
         """
         df = df[df["lang"] == "en"]
+    
